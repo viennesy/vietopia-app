@@ -1,0 +1,33 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.vietopia.website'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.vietopia.website'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    signingConfigs {
+        vietopia {
+            storeFile file('vietopia.jks')
+            storePassword 'vietopia123'
+            keyAlias 'vietopia'
+            keyPassword 'vietopia123'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.vietopia
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint { checkReleaseBuilds false; abortOnError false }
+}
